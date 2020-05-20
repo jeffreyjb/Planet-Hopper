@@ -19,20 +19,18 @@ public:
   // Called every frame
   virtual void Tick(float DeltaTime) override;
 
+  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UStaticMeshComponent *PlanetRootObj = nullptr;
+
+  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UStaticMeshComponent *PlanetBodyMesh = nullptr;
+
+  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UStaticMeshComponent *JumpPlatform = nullptr;
+
 protected:
   // Called when the game starts or when spawned
   virtual void BeginPlay() override;
 
 private:
-  UPROPERTY(VisibleAnywhere, Category = "Components")
-  UStaticMeshComponent *PlanetRoot = nullptr;
-
-  UPROPERTY(VisibleAnywhere, Category = "Components")
-  UStaticMeshComponent *Planet = nullptr;
-
-  UPROPERTY(VisibleAnywhere, Category = "Components")
-  UStaticMeshComponent *LandingPlane = nullptr;
-
-  UFUNCTION(BlueprintCallable, Category = "Movement")
-  void SetPlanetVelocity(float speed);
 };
