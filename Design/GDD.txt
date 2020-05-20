@@ -1,0 +1,32 @@
+Planet Hopper Game Design Document
+__________________________________
+-------
+Concept
+-------
+- The player must jump from planet to planet as long as they can
+- You will score points for every consecutive planet you jump on
+- Planets will fly at you at different speeds
+- Game will be an endless platformer style
+
+-----
+Rules
+-----
+- You can only move left, right, up and down
+- Each planet gives you +1 points
+- You lose the game if you hit the bottom or right border of screen
+
+------------
+Requirements
+------------
+- SFX: Jumping, dying, maybe planets whooshing
+- Static Mesh: Robot (from Epic store)
+- Textures/Materials: 
+  - Use Moon / Mars materials that I made in test project
+  - Will generate randomly sized spheres with the mars or moon material
+    - Make sure that we either alter a material instance with code 
+    - OR
+    - Have sufficient material instances for planet variability
+- Music: Background sci-fi music
+- UI: 
+  - Main menu, pause menu overlay, game over
+  - High Score (need to somehow save state)
