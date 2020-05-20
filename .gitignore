@@ -76,7 +76,10 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-VSCode Files
+# VSCode Files
 /.vscode/*
 PlanetHopper.code-workspace
+
+# Imported Assets
+Content/Import
 
