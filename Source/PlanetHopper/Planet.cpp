@@ -20,6 +20,9 @@ APlanet::APlanet()
   JumpPlatform->SetupAttachment(PlanetRootObj); // Slightly better than attachtocomponent, works only in constructor
   JumpPlatform->SetEnableGravity(false);
   JumpPlatform->SetVisibility(false);
+
+  LandingZone = CreateDefaultSubobject<UBoxComponent>(FName("LandingZone"));
+  LandingZone->SetupAttachment(JumpPlatform);
 }
 
 // Called when the game starts or when spawned
@@ -32,4 +35,25 @@ void APlanet::BeginPlay()
 void APlanet::Tick(float DeltaTime)
 {
   Super::Tick(DeltaTime);
+
+  // Find all overlapping actors
+  TArray<AActor *> OverlappingActors;
+
+  if (!LandingZone)
+  {
+    return;
+  }
+
+  LandingZone->GetOverlappingActors(OverlappingActors);
+  if (OverlappingActors.Num() != 0)
+  {
+    FString SomeGuy = OverlappingActors[0]->GetName();
+    APawn *CollidingActor = Cast<APawn>(OverlappingActors[0]);
+    if (!CollidingActor)
+    {
+      return;
+    }
+    bool bIsPlayer = CollidingActor->IsPlayerControlled();
+    UE_LOG(LogTemp, Warning, TEXT("Player FOUND: %i"), bIsPlayer);
+  }
 }

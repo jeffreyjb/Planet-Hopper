@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 #include "Planet.generated.h"
 
 UCLASS()
@@ -19,14 +20,17 @@ public:
   // Called every frame
   virtual void Tick(float DeltaTime) override;
 
-  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Components")
   UStaticMeshComponent *PlanetRootObj = nullptr;
 
-  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Components")
   UStaticMeshComponent *PlanetBodyMesh = nullptr;
 
-  UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Components")
+  UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Components")
   UStaticMeshComponent *JumpPlatform = nullptr;
+
+  UPROPERTY(EditDefaultsOnly, Category = "Components")
+  UBoxComponent *LandingZone = nullptr;
 
 protected:
   // Called when the game starts or when spawned
