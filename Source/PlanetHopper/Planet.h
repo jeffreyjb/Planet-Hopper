@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
+#include "PlanetHopperGameMode.h"
 #include "Planet.generated.h"
 
 UCLASS()
@@ -20,6 +21,9 @@ public:
   // Called every frame
   virtual void Tick(float DeltaTime) override;
 
+  void UpdateScore();
+
+  // Properties
   UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Components")
   UStaticMeshComponent *PlanetRootObj = nullptr;
 
@@ -37,4 +41,9 @@ protected:
   virtual void BeginPlay() override;
 
 private:
+  void GetGameModeReference();
+
+  // Properties
+  bool bHasScored = false;
+  APlanetHopperGameMode *PlanetGameMode = nullptr;
 };

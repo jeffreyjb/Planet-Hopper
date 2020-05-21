@@ -29,20 +29,26 @@ APlanet::APlanet()
 void APlanet::BeginPlay()
 {
   Super::BeginPlay();
+
+  GetGameModeReference();
 }
 
 // Called every frame
 void APlanet::Tick(float DeltaTime)
 {
   Super::Tick(DeltaTime);
+  UpdateScore();
+}
 
-  // Find all overlapping actors
-  TArray<AActor *> OverlappingActors;
-
-  if (!LandingZone)
+void APlanet::UpdateScore()
+{
+  if (bHasScored || !LandingZone)
   {
     return;
   }
+
+  // Find all overlapping actors
+  TArray<AActor *> OverlappingActors;
 
   LandingZone->GetOverlappingActors(OverlappingActors);
   if (OverlappingActors.Num() != 0)
@@ -54,6 +60,21 @@ void APlanet::Tick(float DeltaTime)
       return;
     }
     bool bIsPlayer = CollidingActor->IsPlayerControlled();
-    UE_LOG(LogTemp, Warning, TEXT("Player FOUND: %i"), bIsPlayer);
+    if (bIsPlayer)
+    {
+      bHasScored = true;
+      PlanetGameMode->SetCurrentScore(PlanetGameMode->GetCurrentScore() + 1);
+    }
   }
+}
+
+void APlanet::GetGameModeReference()
+{
+  // Get reference to game mode
+  auto CurrentGameMode = GetWorld()->GetAuthGameMode();
+  if (!CurrentGameMode)
+  {
+    return;
+  }
+  PlanetGameMode = Cast<APlanetHopperGameMode>(CurrentGameMode);
 }
