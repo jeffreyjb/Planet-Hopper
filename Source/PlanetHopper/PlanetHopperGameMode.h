@@ -37,6 +37,8 @@ private:
   UPROPERTY(VisibleAnywhere, Category = "Scoring")
   int32 HighScore = 0;
 
+  bool bAlteringHighScore = false;
+
   USaveGameData *SaveGameInst = nullptr;
   USaveGameData *LoadGameInst = nullptr;
 

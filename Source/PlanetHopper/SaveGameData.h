@@ -23,6 +23,6 @@ public:
   UPROPERTY(VisibleAnywhere, Category = "Basic")
   uint32 UserIndex;
 
-  UPROPERTY(VisibleAnywhere, Category = "Basic")
+  UPROPERTY(EditAnywhere, Category = "Basic")
   int32 SavedHighScore;
 };
