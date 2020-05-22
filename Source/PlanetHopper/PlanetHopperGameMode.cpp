@@ -5,8 +5,8 @@
 
 APlanetHopperGameMode::APlanetHopperGameMode()
 {
-  //SaveGameInst = Cast<USaveGameData>(UGameplayStatics::CreateSaveGameObject(USaveGameData::StaticClass()));
-  //LoadSavedHighScore();
+  SaveGameInst = Cast<USaveGameData>(UGameplayStatics::CreateSaveGameObject(USaveGameData::StaticClass()));
+  LoadSavedHighScore();
 }
 
 void APlanetHopperGameMode::SetHighScore(int32 ScoreToSet)
@@ -16,8 +16,8 @@ void APlanetHopperGameMode::SetHighScore(int32 ScoreToSet)
   {
     return;
   }
-  //SaveGameInst->SavedHighScore = ScoreToSet;
-  //UGameplayStatics::SaveGameToSlot(SaveGameInst, SaveGameInst->SaveSlotName, SaveGameInst->UserIndex);
+  SaveGameInst->SavedHighScore = ScoreToSet;
+  UGameplayStatics::SaveGameToSlot(SaveGameInst, SaveGameInst->SaveSlotName, SaveGameInst->UserIndex);
 }
 
 int32 APlanetHopperGameMode::GetHighScore() const

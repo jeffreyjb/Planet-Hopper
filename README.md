@@ -1,4 +1,4 @@
-# Planet-Hopper
+# Planet Hopper
 
 Stay alive by hopping planet to planet! Rack up as high of a score as you can, and make sure you 
 don't fall off into space!
