@@ -9,3 +9,7 @@ don't fall off into space!
   - All changes are moved into main project content
   - Changed ThirdPersonController_BP to Robot_BP and moved to Blueprint folder
   - All other assets in Content/Import (see .gitignore)
+
+## Credit
+- Background music and sound effects from PlayOnLoop.com
+- Licensed under Creative Commons by Attribution 4.0
